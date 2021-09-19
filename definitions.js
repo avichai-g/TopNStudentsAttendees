@@ -10,6 +10,6 @@ const attendees = [
   ["Eden", "Andrew", "Yoni", "Nitzan", "Ortal", "Nitzan", "yyy"],
 ];
 
-const N = 4;
+const N = 5;
 
 module.exports = { students, attendees, N };

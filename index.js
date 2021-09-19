@@ -10,27 +10,37 @@ const definitions = require("./definitions");
 //
 
 const topNStudentsAttendees = (students, attendees, N) => {
-  const uniqueStudents = unique.uniqueValues(students);
-  const resStudentsAttandees = studentAttendees.studentAttendees(
-    uniqueStudents,
-    attendees
-  );
+  if (!students || !attendees || N <= 0)
+    return console.log("Please insert a valid values!!");
 
-  const uniqueStudentsAttandees =
-    unique.uniqueValuesAttendees(resStudentsAttandees);
+  if (!Array.isArray(students) || !Array.isArray(attendees))
+    return console.log("Please insert a valid values!!");
+  else {
+    const uniqueStudents = unique.uniqueValues(students);
+    const resStudentsAttandees = studentAttendees.studentAttendees(
+      uniqueStudents,
+      attendees
+    );
 
-  const numOfOcc = findocc.findOccInArray(uniqueStudentsAttandees);
+    const uniqueStudentsAttandees =
+      unique.uniqueValuesAttendees(resStudentsAttandees);
 
-  const numOfOccSorted = sort.sortArrayDecending(numOfOcc);
+    const numOfOcc = findocc.findOccInArray(uniqueStudentsAttandees);
 
-  const slicedArray = numOfOccSorted.slice(0, N);
-  return slicedArray.map((item) => {
-    return item["name"];
-  });
+    const numOfOccSorted = sort.sortArrayDecending(numOfOcc);
+
+    const slicedArray = numOfOccSorted.slice(0, N);
+    return slicedArray.map((item) => {
+      return item["name"];
+    });
+  }
 };
 const studentAttandeesMost = topNStudentsAttendees(
   definitions.students,
   definitions.attendees,
   definitions.N
 );
-console.log(`studentAttandeesMost`, studentAttandeesMost);
+
+if (studentAttandeesMost) {
+  console.log(`studentAttandeesMost`, studentAttandeesMost);
+}
