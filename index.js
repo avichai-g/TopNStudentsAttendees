@@ -5,16 +5,14 @@ const findocc = require("./components/findOcc");
 const sort = require("./components/sort");
 const definitions = require("./definitions");
 
-//definitions
-
-//
-
+//Validate inputs
 const topNStudentsAttendees = (students, attendees, N) => {
   if (!students || !attendees || N <= 0)
     return console.log("Please insert a valid values!!");
 
   if (!Array.isArray(students) || !Array.isArray(attendees))
     return console.log("Please insert a valid values!!");
+  //----------------------------------------------------------
   else {
     const uniqueStudents = unique.uniqueValues(students);
     const resStudentsAttandees = studentAttendees.studentAttendees(
